@@ -8,18 +8,36 @@ class TokenStorage {
   static const String _accentColorKey = 'app_accent_color';
 
   static Future<void> saveToken(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_tokenKey, token);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_tokenKey, token);
+      print('Токен успешно сохранён!');
+      print('Токен: ${token.length > 20 ? token.substring(0, 20) + "..." : token}');
+    } catch (e) {
+      print('ОШИБКА при сохранении токена: $e');
+    }
   }
 
   static Future<String?> getToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_tokenKey);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString(_tokenKey);
+      print('Токен из хранилища: ${token != null ? "есть" : "отсутствует"}');
+      return token;
+    } catch (e) {
+      print('ОШИБКА при чтении токена: $e');
+      return null;
+    }
   }
 
   static Future<void> deleteToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove(_tokenKey);
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(_tokenKey);
+      print('Токен удалён');
+    } catch (e) {
+      print('ОШИБКА при удалении токена: $e');
+    }
   }
 
   static Future<void> saveLanguage(String languageCode) async {
