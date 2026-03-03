@@ -15,7 +15,6 @@ class PlayerService {
 
   Future<void> setVolume(double vol) => _player.setVolume(vol.clamp(0.0, 1.0));
 
-  // Самый стабильный и быстрый вариант для твоей версии пакета
   Future<void> playTrack(Track track, YandexMusic client) async {
     currentTrack = track;
 
@@ -30,9 +29,9 @@ class PlayerService {
       await _player.setFilePath(file.path);
       await _player.play();
 
-      print('▶️ Запущен: ${track.title}');
+      print('Запущен: ${track.title}');
     } catch (e) {
-      print('❌ Ошибка: $e');
+      print('Ошибка: $e');
     }
   }
 
