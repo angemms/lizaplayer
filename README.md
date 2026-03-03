@@ -26,7 +26,7 @@
 
 ```bash
 # Клонируем
-git clone https://github.com/angemms/lizaplayer.git
+git clone https://github.com/lizapropanol/lizaplayer.git
 cd lizaplayer
 
 # Устанавливаем зависимости
