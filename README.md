@@ -65,3 +65,7 @@ flutter run -d linux --release
 - build_runner: ^2.4.13
 - riverpod_generator: ^2.4.3
 - riverpod_lint: ^2.3.0
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/image?repos=lizapropanol/lizaplayer&type=date&legend=top-left)](https://www.star-history.com/?repos=lizapropanol%2Flizaplayer&type=date&legend=bottom-right)
