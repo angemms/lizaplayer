@@ -55,10 +55,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     final query = _searchController.text.trim();
     if (query.isEmpty) return;
 
-    setState(() {
-      _loading = true;
-      _error = null;
-    });
+    setState(() { _loading = true; _error = null; });
 
     try {
       final tracks = await _client.search.tracks(query);
@@ -71,11 +68,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   }
 
   Future<void> _startMyWave() async {
-    setState(() {
-      _loading = true;
-      _error = null;
-      _tracks = [];
-    });
+    setState(() { _loading = true; _error = null; _tracks = []; });
 
     try {
       final waves = await _client.myVibe.getWaves();
@@ -90,9 +83,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         } catch (_) {}
       }
 
-      if (_tracks.isNotEmpty) {
-        await _playTrack(0);
-      }
+      if (_tracks.isNotEmpty) await _playTrack(0);
     } catch (e) {
       final fallback = await _client.search.tracks('мой день');
       setState(() => _tracks = fallback);
@@ -106,12 +97,10 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     if (index < 0 || index >= _tracks.length) return;
 
     _currentIndex = index;
-    final track = _tracks[index];
-
     setState(() {});
 
     try {
-      await _playerService.playTrack(track, _client);
+      await _playerService.playTrack(_tracks[index], _client);
     } catch (e) {
       print('Ошибка воспроизведения: $e');
     }
@@ -487,7 +476,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
                       Center(
                         child: Text(
-                          'lizaplayer v1.2.0',
+                          'lizaplayer v1.2.6',
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
@@ -561,37 +550,54 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: 420,
-          height: 420,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(32),
-            boxShadow: [
-              BoxShadow(
-                color: Theme.of(context).colorScheme.primary.withOpacity(isDark ? 0.65 : 0.25),
-                blurRadius: 70,
-                spreadRadius: isDark ? 12 : 6,
+        AnimatedSwitcher(
+          duration: const Duration(milliseconds: 420),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return ScaleTransition(
+              scale: animation,
+              child: FadeTransition(
+                opacity: animation,
+                child: child,
               ),
-            ],
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(32),
-            child: current != null
-                ? CachedNetworkImage(
-                    imageUrl: _getCoverUrl(current.coverUri, size: '400x400'),
-                    fit: BoxFit.cover,
-                    errorWidget: (_, __, ___) => const Icon(Icons.music_note, size: 140, color: Colors.white24),
-                  )
-                : const Icon(Icons.music_note, size: 140, color: Colors.white24),
+            );
+          },
+          child: Container(
+            key: ValueKey(current?.id ?? 'empty'),
+            width: 420,
+            height: 420,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(32),
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).colorScheme.primary.withOpacity(isDark ? 0.65 : 0.25),
+                  blurRadius: 70,
+                  spreadRadius: isDark ? 12 : 6,
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(32),
+              child: current != null
+                  ? CachedNetworkImage(
+                      imageUrl: _getCoverUrl(current.coverUri, size: '400x400'),
+                      fit: BoxFit.cover,
+                      errorWidget: (_, __, ___) => const Icon(Icons.music_note, size: 140, color: Colors.white24),
+                    )
+                  : const Icon(Icons.music_note, size: 140, color: Colors.white24),
+            ),
           ),
         ),
+
         const SizedBox(height: 40),
+
         if (current != null) ...[
           Text(current.title ?? '', style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
           const SizedBox(height: 8),
           Text(current.artists?.map((a) => a.title).join(', ') ?? '', style: const TextStyle(fontSize: 17, color: Colors.grey), textAlign: TextAlign.center),
         ],
+
         const SizedBox(height: 30),
+
         if (current != null)
           Container(
             width: 500,
@@ -600,23 +606,50 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             child: Column(
               children: [
                 StreamBuilder<Duration>(
-                  stream: _playerService.positionStream,
+                  stream: _playerService.player.positionStream,
                   builder: (context, snapshot) {
                     final pos = snapshot.data ?? Duration.zero;
                     final dur = _playerService.duration ?? Duration.zero;
+
                     return Column(
                       children: [
                         Slider(
-                          value: pos.inSeconds.toDouble().clamp(0, dur.inSeconds.toDouble()),
-                          max: dur.inSeconds.toDouble() > 0 ? dur.inSeconds.toDouble() : 1,
+                          value: pos.inMilliseconds.toDouble().clamp(0, dur.inMilliseconds.toDouble()),
+                          max: dur.inMilliseconds.toDouble() > 0 ? dur.inMilliseconds.toDouble() : 1,
                           activeColor: Theme.of(context).colorScheme.primary,
-                          onChanged: (v) => _playerService.player.seek(Duration(seconds: v.toInt())),
+                          onChanged: (v) => _playerService.player.seek(Duration(milliseconds: v.toInt())),
                         ),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text(_formatDuration(pos)), Text(_formatDuration(dur))]),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                _formatDuration(pos),
+                                style: TextStyle(
+                                  fontSize: 13.5,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey[400],
+                                  fontFeatures: const [FontFeature.tabularFigures()],
+                                ),
+                              ),
+                              Text(
+                                _formatDuration(dur),
+                                style: TextStyle(
+                                  fontSize: 13.5,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey[400],
+                                  fontFeatures: const [FontFeature.tabularFigures()],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     );
                   },
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -631,13 +664,18 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     IconButton(icon: const Icon(Icons.skip_next, size: 36), onPressed: _playNext),
                   ],
                 ),
+
                 Row(
                   children: [
                     const Icon(Icons.volume_down),
                     Expanded(
                       child: StreamBuilder<double>(
                         stream: _playerService.player.volumeStream,
-                        builder: (_, snap) => Slider(value: snap.data ?? _playerService.volume, activeColor: Theme.of(context).colorScheme.primary, onChanged: (v) => _playerService.setVolume(v)),
+                        builder: (_, snap) => Slider(
+                          value: snap.data ?? _playerService.volume,
+                          activeColor: Theme.of(context).colorScheme.primary,
+                          onChanged: (v) => _playerService.setVolume(v),
+                        ),
                       ),
                     ),
                     const Icon(Icons.volume_up),
@@ -703,6 +741,13 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                     itemBuilder: (context, index) {
                       final track = _tracks[index];
                       final isPlaying = _playerService.currentTrack?.id == track.id;
+
+                      final durationText = _formatDuration(
+                        track.durationMs != null 
+                            ? Duration(milliseconds: track.durationMs!) 
+                            : null
+                      );
+
                       return ListTile(
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
@@ -716,7 +761,16 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                         ),
                         title: Text(track.title ?? ''),
                         subtitle: Text(track.artists?.map((a) => a.title).join(', ') ?? ''),
-                        trailing: isPlaying ? Icon(Icons.play_circle, color: Theme.of(context).colorScheme.primary) : null,
+                        trailing: isPlaying 
+                            ? const Icon(Icons.play_circle, color: Colors.cyan)
+                            : Text(
+                                durationText,
+                                style: const TextStyle(
+                                  fontSize: 13.5,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                         onTap: () => _playTrack(index),
                       );
                     },

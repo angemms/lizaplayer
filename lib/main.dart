@@ -28,6 +28,7 @@ void main() async {
     center: true,
     backgroundColor: Colors.transparent,
     titleBarStyle: TitleBarStyle.hidden,
+    skipTaskbar: false,
   );
 
   await windowManager.waitUntilReadyToShow(windowOptions, () async {
@@ -55,7 +56,7 @@ class MyApp extends ConsumerWidget {
     final locale = ref.watch(localeProvider);
 
     return MaterialApp(
-      title: 'lizaplayer',
+      title: '',
       debugShowCheckedModeBanner: false,
 
       locale: locale,
