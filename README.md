@@ -1,4 +1,4 @@
-### About the Player
+## About the Player
 
 - Open source
 - Fully custom design with dark and light themes
@@ -9,7 +9,7 @@
 - Smooth animations and attention to detail
 - Cross-platform: Works on Linux and Windows
 
-### Screenshots
+## Screenshots
 
 ![w1](https://github.com/user-attachments/assets/bf8f3b63-be6a-4c1c-8f98-368bcc25e128)
 ![w2](https://github.com/user-attachments/assets/7e398ba5-68ca-4298-a3e2-c5c52e1850a4)
