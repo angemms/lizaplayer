@@ -1,52 +1,67 @@
-### О плеере
+### About the Player
 
-- opensource
-- Полностью кастомный дизайн в тёмном/светлом стиле
-- Выбор акцентного цвета (аква, красный, серый, оранжевый, фиолетовый и т.д.)
-- Приятный интерфейс
-- Моя волна
-- Поиск треков
-- Плавные анимации и внимание к мелочам
-- Работает на Linux и Windows
+- Open source
+- Fully custom design with dark and light themes
+- Accent color selection (aqua, red, grey, orange, purple, etc.)
+- User-friendly interface
+- "My Wave" (personalized radio)
+- Track search
+- Smooth animations and attention to detail
+- Cross-platform: Works on Linux and Windows
 
-### Скриншоты
+### Screenshots
 
 ![w1](https://github.com/user-attachments/assets/bf8f3b63-be6a-4c1c-8f98-368bcc25e128)
 ![w2](https://github.com/user-attachments/assets/7e398ba5-68ca-4298-a3e2-c5c52e1850a4)
 ![w3](https://github.com/user-attachments/assets/577530ed-df63-49b7-bcfd-ac64eddcb2d2)
-![w4](https://github.com/user-attachments/assets/aefb337f-f95f-4595-9650-5fbcff3bb12c)
+![w4](https://github.com/user-attachments/assets/aefb337f-f95f-4595-9650-5fbcff3bb12c) 
 
-### Как запустить
+### How to Run
 
-- Скачиваем последний релиз
-- Разархивируем
-- Запускаем исполняемый файл
+- Download the latest release
+- Unpack the archive
+- Run the executable file
 
-### Как запустить (альтернатива)
+### How to Run (Alternative)
 
 ```bash
-# Клонируем
+
+# Cloning
+
 git clone https://github.com/lizapropanol/lizaplayer.git
+
 cd lizaplayer
 
-# Устанавливаем зависимости
+
+# Installing dependencies
+
 flutter pub get
 
-# Запускаем
+
+# Let's launch
+
 flutter run -d linux --release
+
 ```
 
-### Как получить токен Yandex Music
+### How to get a Yandex Music token
 
-Открой music.yandex.ru в браузере
-Нажми F12 → вкладка Application → Local Storage → https://music.yandex.ru
-Найди ключ access_token или oauth и скопируй его
-Вставь в lizaplayer и нажми "Сохранить и войти"
+- Open music.yandex.ru in your browser.
+- Press F12 → go to the Application tab → Local Storage → https://music.yandex.ru.
+- Find the access_token or oauth key and copy its value.
+- Paste it into lizaplayer and click "Save and Login".
 
-### Технологии
+### Tech Stack
 
-Flutter + Riverpod
-just_audio
-yandex_music API
-shared_preferences
-window_manager
+- intl: ^0.20.2
+- yandex_music: ^1.2.2
+- just_audio: ^0.9.46
+- just_audio_media_kit: ^1.0.0
+- cached_network_image: ^3.4.1
+- window_manager: ^0.4.2
+- flutter_riverpod: ^2.5.1
+- shared_preferences: ^2.3.0
+- path_provider: ^2.1.4
+- build_runner: ^2.4.13
+- riverpod_generator: ^2.4.3
+- riverpod_lint: ^2.3.0
