@@ -9,12 +9,10 @@
 - Smooth animations and attention to detail
 - Cross-platform: Works on Linux and Windows
 
-## Screenshots
+## Screenshots (2560x1440)
 
 ![w1](https://github.com/user-attachments/assets/bf8f3b63-be6a-4c1c-8f98-368bcc25e128)
-![w2](https://github.com/user-attachments/assets/7e398ba5-68ca-4298-a3e2-c5c52e1850a4)
-![w3](https://github.com/user-attachments/assets/577530ed-df63-49b7-bcfd-ac64eddcb2d2)
-![w4](https://github.com/user-attachments/assets/aefb337f-f95f-4595-9650-5fbcff3bb12c) 
+![e2](https://github.com/user-attachments/assets/605de2bb-2308-4533-9275-4faeff2d1859)
 
 ### How to Run
 
@@ -60,7 +58,7 @@ flutter run -d linux --release
 - cached_network_image: ^3.4.1
 - window_manager: ^0.4.2
 - flutter_riverpod: ^2.5.1
-- shared_preferences: ^2.3.0
+- shared_preferences: ^2.3.2
 - path_provider: ^2.1.4
 - build_runner: ^2.4.13
 - riverpod_generator: ^2.4.3
