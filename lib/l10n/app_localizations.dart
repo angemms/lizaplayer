@@ -98,17 +98,11 @@ abstract class AppLocalizations {
     Locale('ru')
   ];
 
-  /// No description provided for @appName.
+  /// No description provided for @untitledTrack.
   ///
   /// In en, this message translates to:
-  /// **'lizaplayer'**
-  String get appName;
-
-  /// No description provided for @home.
-  ///
-  /// In en, this message translates to:
-  /// **'Home'**
-  String get home;
+  /// **'Untitled Track'**
+  String get untitledTrack;
 
   /// No description provided for @myWave.
   ///
@@ -116,11 +110,71 @@ abstract class AppLocalizations {
   /// **'My Wave'**
   String get myWave;
 
-  /// No description provided for @settings.
+  /// No description provided for @personalRecommendations.
   ///
   /// In en, this message translates to:
-  /// **'Settings'**
-  String get settings;
+  /// **'Personal recommendations'**
+  String get personalRecommendations;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @startMyWave.
+  ///
+  /// In en, this message translates to:
+  /// **'Start My Wave'**
+  String get startMyWave;
+
+  /// No description provided for @tracks.
+  ///
+  /// In en, this message translates to:
+  /// **'tracks'**
+  String get tracks;
+
+  /// No description provided for @personalWave.
+  ///
+  /// In en, this message translates to:
+  /// **'personal wave'**
+  String get personalWave;
+
+  /// No description provided for @newWave.
+  ///
+  /// In en, this message translates to:
+  /// **'New wave'**
+  String get newWave;
+
+  /// No description provided for @myLikes.
+  ///
+  /// In en, this message translates to:
+  /// **'My Likes'**
+  String get myLikes;
+
+  /// No description provided for @noLikesYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No likes yet'**
+  String get noLikesYet;
+
+  /// No description provided for @likeToFill.
+  ///
+  /// In en, this message translates to:
+  /// **'Like tracks to fill this playlist'**
+  String get likeToFill;
+
+  /// No description provided for @playlists.
+  ///
+  /// In en, this message translates to:
+  /// **'Playlists'**
+  String get playlists;
+
+  /// No description provided for @syncComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync coming soon'**
+  String get syncComingSoon;
 
   /// No description provided for @theme.
   ///
@@ -146,41 +200,29 @@ abstract class AppLocalizations {
   /// **'System'**
   String get system;
 
+  /// No description provided for @mainColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Main color'**
+  String get mainColor;
+
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
   /// **'Language'**
   String get language;
 
-  /// No description provided for @mainColor.
+  /// No description provided for @english.
   ///
   /// In en, this message translates to:
-  /// **'Main Color'**
-  String get mainColor;
+  /// **'English'**
+  String get english;
 
-  /// No description provided for @clearCache.
+  /// No description provided for @russian.
   ///
   /// In en, this message translates to:
-  /// **'Clear Cache'**
-  String get clearCache;
-
-  /// No description provided for @clearCacheSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete all downloaded tracks'**
-  String get clearCacheSubtitle;
-
-  /// No description provided for @logout.
-  ///
-  /// In en, this message translates to:
-  /// **'Logout'**
-  String get logout;
-
-  /// No description provided for @logoutSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Delete token and exit'**
-  String get logoutSubtitle;
+  /// **'Russian'**
+  String get russian;
 
   /// No description provided for @searchTracks.
   ///
@@ -194,28 +236,10 @@ abstract class AppLocalizations {
   /// **'Find'**
   String get find;
 
-  /// No description provided for @personalRecommendations.
-  ///
-  /// In en, this message translates to:
-  /// **'Personal recommendations\nbased on your taste'**
-  String get personalRecommendations;
-
-  /// No description provided for @startMyWave.
-  ///
-  /// In en, this message translates to:
-  /// **'Start My Wave'**
-  String get startMyWave;
-
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading...'**
-  String get loading;
-
   /// No description provided for @findSomething.
   ///
   /// In en, this message translates to:
-  /// **'Find something above'**
+  /// **'Find something'**
   String get findSomething;
 
   /// No description provided for @appearance.
@@ -230,11 +254,137 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get languageSection;
 
+  /// No description provided for @clearCache.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear cache'**
+  String get clearCache;
+
+  /// No description provided for @clearCacheSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear temporary files'**
+  String get clearCacheSubtitle;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out'**
+  String get logout;
+
+  /// No description provided for @logoutSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Log out of your account'**
+  String get logoutSubtitle;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @myPlaylists.
+  ///
+  /// In en, this message translates to:
+  /// **'My Playlists'**
+  String get myPlaylists;
+
   /// No description provided for @dataAndAccount.
   ///
   /// In en, this message translates to:
   /// **'Data and Account'**
   String get dataAndAccount;
+
+  /// No description provided for @glassInterface.
+  ///
+  /// In en, this message translates to:
+  /// **'Glass interface'**
+  String get glassInterface;
+
+  /// No description provided for @customBackground.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom background'**
+  String get customBackground;
+
+  /// No description provided for @directLinkToGifOrImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct link to GIF or image'**
+  String get directLinkToGifOrImage;
+
+  /// No description provided for @urlExample.
+  ///
+  /// In en, this message translates to:
+  /// **'https://i.imgur.com/abc123.gif or .jpg'**
+  String get urlExample;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @clear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clear;
+
+  /// No description provided for @installed.
+  ///
+  /// In en, this message translates to:
+  /// **'Installed'**
+  String get installed;
+
+  /// No description provided for @notInstalled.
+  ///
+  /// In en, this message translates to:
+  /// **'Not installed'**
+  String get notInstalled;
+
+  /// No description provided for @noColor.
+  ///
+  /// In en, this message translates to:
+  /// **'No color'**
+  String get noColor;
+
+  /// No description provided for @queue.
+  ///
+  /// In en, this message translates to:
+  /// **'Queue'**
+  String get queue;
+
+  /// No description provided for @queueEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Queue is empty'**
+  String get queueEmpty;
+
+  /// No description provided for @backgroundBlur.
+  ///
+  /// In en, this message translates to:
+  /// **'Background Blur'**
+  String get backgroundBlur;
+
+  /// No description provided for @searchResultsFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Search results for \"{query}\"'**
+  String searchResultsFor(Object query);
 }
 
 class _AppLocalizationsDelegate

@@ -11,6 +11,7 @@ import 'package:lizaplayer/services/token_storage.dart';
 final themeModeProvider = StateProvider<ThemeMode>((ref) => ThemeMode.dark);
 final accentColorProvider = StateProvider<Color>((ref) => Colors.cyanAccent);
 final localeProvider = StateProvider<Locale>((ref) => const Locale('en'));
+final glassEnabledProvider = StateProvider<bool>((ref) => false);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +19,7 @@ void main() async {
   final savedTheme = await TokenStorage.getThemeMode();
   final savedColorValue = await TokenStorage.getAccentColor();
   final savedLang = await TokenStorage.getLanguage();
+  final savedGlassEnabled = await TokenStorage.getGlassEnabled() ?? false;
 
   final initialLocale = savedLang == 'ru' ? const Locale('ru') : const Locale('en');
 
@@ -42,6 +44,7 @@ void main() async {
       themeModeProvider.overrideWith((ref) => savedTheme),
       accentColorProvider.overrideWith((ref) => Color(savedColorValue)),
       localeProvider.overrideWith((ref) => initialLocale),
+      glassEnabledProvider.overrideWith((ref) => savedGlassEnabled),
     ],
     child: const MyApp(),
   ));

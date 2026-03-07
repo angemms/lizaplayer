@@ -2,7 +2,7 @@ name: lizaplayer
 description: Custom Yandex Music player
 publish_to: 'none'
 
-version: 1.2.6+1
+version: 2.0.0+1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -11,19 +11,17 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Локализация
   intl: ^0.20.2
   flutter_localizations:
     sdk: flutter
 
-  # Основные пакеты
   yandex_music: ^1.2.2
   just_audio: ^0.9.46
   just_audio_media_kit: ^1.0.0
   cached_network_image: ^3.4.1
   window_manager: ^0.4.2
   flutter_riverpod: ^2.5.1
-  shared_preferences: ^2.3.0
+  shared_preferences: ^2.3.2
   path_provider: ^2.1.4
 
 dev_dependencies:
