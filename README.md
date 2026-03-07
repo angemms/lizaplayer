@@ -51,7 +51,6 @@ flutter run -d linux --release
 - Paste it into lizaplayer and click "Save and Login".
 
 ### Tech Stack
-<<<<<<< HEAD
 
 - intl: ^0.20.2
 - yandex_music: ^1.2.2
