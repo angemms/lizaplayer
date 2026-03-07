@@ -51,6 +51,7 @@ flutter run -d linux --release
 - Paste it into lizaplayer and click "Save and Login".
 
 ### Tech Stack
+<<<<<<< HEAD
 
 - intl: ^0.20.2
 - yandex_music: ^1.2.2
@@ -75,3 +76,28 @@ flutter run -d linux --release
  </picture>
 </a>
 
+=======
+
+- intl: ^0.20.2
+- yandex_music: ^1.2.2
+- just_audio: ^0.9.46
+- just_audio_media_kit: ^1.0.0
+- cached_network_image: ^3.4.1
+- window_manager: ^0.4.2
+- flutter_riverpod: ^2.5.1
+- shared_preferences: ^2.3.2
+- path_provider: ^2.1.4
+- build_runner: ^2.4.13
+- riverpod_generator: ^2.4.3
+- riverpod_lint: ^2.3.0
+
+## Star History
+
+<a href="https://www.star-history.com/?repos=lizapropanol%2Flizaplayer&type=date&legend=bottom-right">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=lizapropanol/lizaplayer&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=lizapropanol/lizaplayer&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=lizapropanol/lizaplayer&type=date&legend=top-left" />
+ </picture>
+</a>
+>>>>>>> 88014c68b176347e02d79858d7f2d598bafc6c8e
